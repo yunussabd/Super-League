@@ -1,0 +1,91 @@
+Data checks for data/processed/matches.csv (run 2026-11-27 11:57)
+
+1. Size
+-------
+1,693 matches and 25 columns, 13 Aug 2021 to 17 May 2026, 29 different teams
+         matches  teams first_match last_match  full_season  difference
+season                                                                 
+2021/22      380     20  2021-08-13 2022-05-22          380           0
+2022/23      313     19  2022-08-05 2023-06-07          342         -29
+2023/24      380     20  2023-08-11 2024-05-26          380           0
+2024/25      314     19  2024-08-09 2025-06-01          342         -28
+2025/26      306     18  2025-08-08 2026-05-17          306           0
+full_season = teams x (teams - 1). A negative difference means matches are missing or were removed (load_data.py drops awarded results).
+
+2. Data types
+-------------
+datetime64[us]  date
+float64         home_shots, away_shots, home_sot, away_sot, b365_h, b365_d, b365_a, b365c_h, b365c_d, b365c_a, max_h, max_d, max_a, p_home, p_draw, p_away, margin
+int64           match_id, home_goals, away_goals
+str             season, home, away, result
+
+3. Missing values
+-----------------
+            missing  percent
+home_shots        1      0.1
+away_shots        1      0.1
+home_sot          1      0.1
+away_sot          1      0.1
+b365c_h        1693    100.0
+b365c_d        1693    100.0
+b365c_a        1693    100.0
+The other 18 columns are complete.
+Matches with a gap:
+ season       date         home        away  home_shots  away_shots  home_sot  away_sot
+2023/24 2023-12-19 Istanbulspor Trabzonspor         NaN         NaN       NaN       NaN
+
+4. Consistency checks
+---------------------
+PASS  no duplicate matches (same date and teams)
+PASS  no team plays itself
+PASS  result agrees with the goals
+PASS  goals and shots are never negative
+PASS  shots on target never exceed shots
+PASS  every match falls inside its season (Jul-Jun)
+PASS  Bet365 odds are above 1.0
+PASS  fair probabilities add up to 1
+PASS  stored probabilities match the odds
+PASS  stored margin matches the odds
+PASS  bookmaker margin between 0% and 15%
+
+5. Descriptive statistics
+-------------------------
+                n   mean  median   std   IQR   min    max
+home_goals   1693   1.59    1.00  1.29  1.00  0.00   7.00
+away_goals   1693   1.25    1.00  1.18  2.00  0.00   7.00
+total_goals  1693   2.84    3.00  1.71  2.00  0.00   9.00
+home_shots   1692  13.90   13.00  5.36  7.00  2.00  40.00
+away_shots   1692  11.39   11.00  4.69  6.00  1.00  35.00
+home_sot     1692   4.95    5.00  2.57  3.25  0.00  17.00
+away_sot     1692   3.98    4.00  2.35  3.00  0.00  15.00
+b365_h       1693   2.52    2.16  1.35  0.98  1.05  14.52
+b365_d       1693   3.90    3.59  0.93  0.60  2.11  14.18
+b365_a       1693   3.87    3.25  2.48  1.88  1.15  27.07
+margin_pct   1693   6.55    6.28  0.87  0.59  5.31  13.69
+std = standard deviation, IQR = interquartile range, margin_pct = Bet365 margin in %
+
+Results: home win 45.6%, draw 25.3%, away win 29.1%
+
+By season:
+         home_win_%  draw_%  away_win_%  goals_per_match  margin_%
+season                                                            
+2021/22       47.11   23.95       28.95             2.81      6.09
+2022/23       45.05   23.32       31.63             3.05      6.11
+2023/24       45.53   26.32       28.16             2.79      6.33
+2024/25       47.77   24.20       28.03             2.93      6.37
+2025/26       42.16   29.08       28.76             2.65      8.02
+
+6. Raw files
+------------
+T1_2122.csv    380 rows   29 columns  closing odds: no
+T1_2223.csv    342 rows   29 columns  closing odds: no
+T1_2324.csv    380 rows   29 columns  closing odds: no
+T1_2425.csv    314 rows   29 columns  closing odds: no
+T1_2526.csv    306 rows   29 columns  closing odds: no
+FootyStats xG: no files in data/raw/footystats/ yet (licensed data, so .gitignore keeps it out of the public repository).
+
+Summary
+-------
+1,693 matches in 5 seasons; 11 of 11 consistency checks passed.
+Empty columns (not in the source files): b365c_h, b365c_d, b365c_a
+Saved results/data_checks.txt and results/summary_statistics.csv
