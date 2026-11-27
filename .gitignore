@@ -1,5 +1,28 @@
-.venv/
-.venv-1/
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+
+# Virtual environments
+.venv/
+.venv-*/
+venv/
+env/
+
+# Tool caches
+.pytest_cache/
+.ipynb_checkpoints/
 .datafc_cache/
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets
+.env
+
+# Licensed or private data: keep locally, never publish
+data/raw/footystats/
+data/private/

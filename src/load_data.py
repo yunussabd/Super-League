@@ -4,8 +4,8 @@ Step 1: download Turkish Süper Lig match data from Football-Data.co.uk,
 clean it and save one tidy table to data/processed/matches.csv.
 
 Usage:
-    python superleague.py            # download missing files, build matches.csv
-    python superleague.py --refresh  # also re-download the current season (2526)
+    python src/load_data.py            # download missing files, build matches.csv
+    python src/load_data.py --refresh  # also re-download the current season (2526)
 """
 
 import argparse
@@ -19,7 +19,7 @@ SEASONS = ["2122", "2223", "2324", "2425", "2526"]
 CURRENT_SEASON = "2526"
 URL = "https://www.football-data.co.uk/mmz4281/{season}/T1.csv"
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 RAW_DIR = ROOT / "data" / "raw"
 PROCESSED_DIR = ROOT / "data" / "processed"
 

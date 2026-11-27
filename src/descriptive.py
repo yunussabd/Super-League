@@ -6,7 +6,7 @@ results, goals, shots on target, bookmaker margin and how often the
 bookmaker's favourite wins. It also scores two simple forecasts with RPS
 on the training seasons only (2025/26 stays locked as the test season).
 
-    python descriptive.py
+    python src/descriptive.py
 
 Output:
     results/descriptive_by_season.csv   the table printed below

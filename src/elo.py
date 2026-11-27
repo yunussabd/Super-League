@@ -10,7 +10,7 @@ How it works
      predict 2022/23 from 2021/22, predict 2023/24 from 2021/22-2022/23, and so on.
      2025/26 is the locked test season and is NOT predicted here.
 
-    python elo.py
+    python src/elo.py
 
 Output:
     results/elo_tuning.csv        RPS for every combination of settings tried
