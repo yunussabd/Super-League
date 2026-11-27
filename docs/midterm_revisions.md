@@ -1,7 +1,7 @@
 # Midterm Revisions
 
 **Project:** Can Free Public Data Beat the Bookmakers? Forecasting the Turkish Süper Lig
-**Course:** CS251 Integrative BCS Project I · Dr. Olga Erokhina · Schiller International University, Heidelberg
+**Course:** CS251 Integrative BCS Project I · Schiller International University, Heidelberg
 **Author:** Yunus Abdurahman · 27 November 2026
 
 This document closes two gaps from the midterm presentation: full citations for the literature (section 1) and the exact methods and variables of the analysis (section 2).
